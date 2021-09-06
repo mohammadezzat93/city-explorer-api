@@ -10,53 +10,47 @@ server.use(cors())
 
 const PORT = process.env.PORT;
 
-/* 
-we can request 3 ways : 
-1 : browser
-2 : from Extentsions vs : Thunder Client
-3 : Postman
-
-*/
-
 // http://localhost:3010/
-server.get('/', (req,res) =>{
-    res.send('Send 1');
+server.get('/', (req, res) => {
+    res.send('Welcome To My Page');
 });
 
-// http://localhost:3000/test
-server.get('/test',(req,res) =>{
-res.send('Send 2');
-});
+// http://localhost:3000/getWeather?name=bulbasaur
+server.get('/getWeather', (req, res) => {
+    const city_name = req.query.city_name;
 
-// http://localhost:3000/clouds
-server.get('/clouds',(req,res) =>{
-    let description = WeatherData[0].data.map( item=> {
-        console.log(item.weather.description);
-        return [item.datetime,item.weather.description];
-        
-    });
-    res.send(description);
-    });
-
-    // http://localhost:3000/getPock?name=bulbasaur
-server.get('/getPock',(req,res) =>{
-    const description = req.query.description;
-    const x = WeatherData[0].data.find(item =>{
-        if(item.description === description)
+    const newArray = weatherDate[0].data.find( item=> {
+        if (item.city_name === city_name) 
             return item;
     });
-    res.send(x)
+    res.send(newArray)
     });
 
- // uneversal : http://localhost:3000/******* */  **Always End**
-server.get('*',(req,res) =>{
+    const Weather = WeatherData[0].data.map( item => {
+        let object = new Forecast(item);
+        return object;
+    });
+
+    res.send(Weather);
+
+class Forecast {
+
+    constructor(item) {
+
+        this.description = item.weather.description;
+        this.data = item.valid_date;
+    }
+}
+
+// uneversal : http://localhost:3000/******* */  **Always End**
+server.get('*', (req, res) => {
 
     res.status(404).send('Sory , Page Not found');
-    });
+});
 
 
 
-server.listen(PORT, () =>{
+server.listen(PORT, () => {
     console.log(`im listening on ${PORT}`);
 });
 
