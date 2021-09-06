@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express'); // import express
 const WeatherData = require('./assests/Weather.json');
-const cors = require('cors'); //import
+const cors = require('cors'); // import cors
 
 const server = express();
 server.use(cors())
