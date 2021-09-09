@@ -21,6 +21,7 @@ const moduleMovie =require('./movies');
 // http://localhost:3010/
 server.get('/', (req, res) => {
     res.send('Welcome To My Page');
+    console.log('Welcome To My Page');
 });
 
 // http://localhost:3010/weather/?city=Amman
