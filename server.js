@@ -3,10 +3,10 @@
 require('dotenv').config();
 const express = require('express'); // import express
 // const WeatherData = require('./assests/Weather.json');
-
-const axios = require('axios');
-
 const cors = require('cors'); //import
+// const axios = require('axios');
+
+
 
 const server = express();
 server.use(cors())
@@ -24,7 +24,7 @@ server.get('/', (req, res) => {
     console.log('Welcome To My Page');
 });
 
-// http://localhost:3010/weather/?city=Amman
+// http://localhost:3010/weather?city=Amman
 server.get('/weather',moduleWeather);
 
 //http://localhost:3010/movies?query=amman
