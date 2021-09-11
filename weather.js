@@ -23,7 +23,7 @@ const axios=require('axios');
 //     (this.desc = `Low of ${day.low_temp}, high of ${day.high_temp} with ${day.weather.description}`);
 // }
 
-function moduleMovie(req,res){ 
+function moduleWeather(req,res){ 
 
     let name = req.query.city;
     let URL = `https://api.weatherbit.io/v2.0/forecast/daily?city=${name}&key=${process.env.Weather_APP_Key}`;
@@ -47,4 +47,4 @@ function moduleMovie(req,res){
             (this.desc = `Low of ${day.low_temp}, high of ${day.high_temp} with ${day.weather.description}`);
     }
 
-    module.exports=moduleMovie;
+    module.exports=moduleWeather;
